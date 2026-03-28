@@ -1,6 +1,8 @@
 # Build stage
 FROM maven:3.9.11-eclipse-temurin-17 AS build
 COPY . .
+# Fix for the "Permission denied" error
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Run stage

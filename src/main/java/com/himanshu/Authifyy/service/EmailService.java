@@ -15,7 +15,6 @@ public class EmailService {
     @Value("${spring.mail.properties.mail.smtp.from}")
     private String fromEmail;
 
-    @Async
     public  void sendWelcomeEmail(String toEmail,String name){
         SimpleMailMessage message= new SimpleMailMessage();
         message.setFrom(fromEmail);

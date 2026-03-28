@@ -62,7 +62,10 @@ public class SecurityConfig {
     // Add your Vercel deployment URL and keep localhost for development
     config.setAllowedOrigins(List.of(
         "http://localhost:5173", 
-        "https://your-vercel-project-name.vercel.app" // Replace with your actual Vercel URL
+        "https://authify-jade.vercel.app",
+        "https://authify-git-main-himanshu-kumars-projects-bd780a2e.vercel.app",
+        "https://authify-himanshu-kumars-projects-bd780a2e.vercel.app"
+        
     ));
     
     config.setAllowedMethods(List.of("GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"));

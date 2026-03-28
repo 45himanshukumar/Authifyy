@@ -56,17 +56,23 @@ public class SecurityConfig {
         return  new CorsFilter(corsConfigurationSource());
     }
 
-    private CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config= new CorsConfiguration();
-        config.setAllowedOrigins(List.of("https://authify-jade.vercel.app/"));
-        config.setAllowedMethods(List.of("GET","POST","DELETE","PUT","PATCH","OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization","Content-Type"));
-        config.setAllowCredentials(true);
+   private CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration config = new CorsConfiguration();
+    
+    // Add your Vercel deployment URL and keep localhost for development
+    config.setAllowedOrigins(List.of(
+        "http://localhost:5173", 
+        "https://your-vercel-project-name.vercel.app" // Replace with your actual Vercel URL
+    ));
+    
+    config.setAllowedMethods(List.of("GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"));
+    config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+    config.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source= new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",config);
-        return source;
-    }
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", config);
+    return source;
+}
     //    @Bean
 //    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
 //        return configuration.getAuthenticationManager();
